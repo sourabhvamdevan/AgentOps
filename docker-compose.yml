@@ -1,0 +1,38 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      EXECUTION_MODE: ${EXECUTION_MODE:-demo}
+      CORS_ORIGINS: http://localhost:5173
+      DEMO_RESET_ENABLED: "true"
+      RATE_LIMIT_EXECUTIONS_PER_HOUR: ${RATE_LIMIT_EXECUTIONS_PER_HOUR:-10}
+      # llm mode only: reach Ollama running on the host machine
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.1:8b}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8000:8000"
+    volumes:
+      - backend-data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # The browser calls the API directly, so this is the host-visible URL.
+        VITE_API_BASE_URL: http://localhost:8000/api/v1
+        VITE_SYNTHETIC_MODE: auto
+    ports:
+      - "5173:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  backend-data:
