@@ -1,7 +1,7 @@
 
 # AgentOps: Multi-Agent Workflow Operations
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-C8102E.svg?logo=vercel&logoColor=white)]()
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-C8102E.svg?logo=vercel&logoColor=white)](https://agentops-project1.vercel.app/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![LangGraph](https://img.shields.io/badge/LangGraph-0.2.0+-FF4F00.svg)](https://langchain-ai.github.io/langgraph/)
 [![React](https://img.shields.io/badge/React-19-61DAFB.svg?logo=react&logoColor=black)](https://react.dev/)
@@ -12,7 +12,7 @@
 
 **AgentOps** is an enterprise-grade, multi-agent workflow orchestration platform built for high-stakes business automation. Powered by **LangGraph**, **FastAPI**, and **React Flow**, it shows how to coordinate autonomous AI agents with **deterministic financial guardrails**, **fault-tolerant human-in-the-loop approval gates**, **restart-resilient state checkpointing**, **real-time WebSocket event streaming**, and a **fleet-level Workflow Monitor**.
 
-> **Live Demo:** []()
+> **Live Demo:** [https://agentops-project1.vercel.app/](https://agentops-project1.vercel.app/)
 > All catalog vendors, pricing, and departmental budgets are synthetic. No real financial transactions are executed.
 
 ---
